@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 /**
- * Класс для работы с базой данных (H2).
+ * Класс для работы с базой данных (HSQLDB).
  */
 public class Database {
 
