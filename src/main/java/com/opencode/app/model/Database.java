@@ -14,12 +14,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 /**
- * Класс для работы с базой данных (HSQLDB).
- * Является одним из классов Модели приложения, построенного на основе архитектуры MVC.
- * Методы класса с помощью JDBC взаимодействуют с таблицами, записями базы данных.
- *
- * @version 1.0
- * @author Vladimir Kizelbashev
+ * Класс для работы с базой данных (H2).
  */
 public class Database {
 
