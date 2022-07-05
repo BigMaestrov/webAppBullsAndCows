@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+    <!-- Дескриптор развёртывания приложения -->
+
+    <!-- Параметры контекста, доступные во всех сервлетах приложения -->
+    <context-param>
+        <param-name>dbDriver</param-name>
+        <param-value>org.hsqldb.jdbc.JDBCDriver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbUrl</param-name>
+        <param-value>jdbc:hsqldb:file:${webroot}WEB-INF/db/testdb</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbUserName</param-name>
+        <param-value>sa</param-value>
+    </context-param>
+    <context-param>
+        <param-name>dbPassword</param-name>
+        <param-value>""</param-value>
+    </context-param>
+
+    <!-- Класс-слушатель событий контекста -->
+    <listener>
+        <listener-class>com.opencode.app.controller.ContextListener</listener-class>
+    </listener>
+
+    <!-- Имя и класс сервлета -->
+    <servlet>
+        <servlet-name>Controller</servlet-name>
+        <servlet-class>com.opencode.app.controller.ControllerServlet</servlet-class>
+    </servlet>
+
+    <!-- Соотнесение шаблона URL и имени сервлета,
+         который будет обрабатывать запросы,
+         соответствующие данному шаблону -->
+    <servlet-mapping>
+        <servlet-name>Controller</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.png</url-pattern>
+    </servlet-mapping>
+
+    <!-- Начальная страница -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <!-- Cтраница ошибки 404 (страница не найдена) -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/jsp/error.jsp</location>
+    </error-page>
+</web-app>
